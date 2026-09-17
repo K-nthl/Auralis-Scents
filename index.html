@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Auralis Scents — Authentic Luxury Mini Perfumes</title>
+  <title>Auralis Scents</title>
   <meta name="description" content="Auralis Scents — authentic luxury mini perfumes sourced from the USA. Your favorite brands in travel size." />
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/jpeg" href="images/logo/logo.jpg">
+  <link rel="icon" type="image/jpeg" href="images/logo/AS.jpg">
 </head>
 <body>
 
@@ -15,41 +15,240 @@
   <div class="container nav-inner">
 
     <a href="#top" class="nav-logo">
-      <img src="images/logo/logo.jpg" alt="Auralis Scents Logo" class="logo-img">
+      <img src="images/logo/AS.jpg" alt="Auralis Scents Logo" class="logo-img">
       <span>Auralis Scents</span>
     </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
 
     <nav>
       <ul class="nav-menu" id="navMenu">
         <li><a href="#collection">Collection</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#shipping">Shipping</a></li>
-        <li><a href="#payment">Payment</a></li>
-        <li><a href="#returns">Returns</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+        <li><a href="#ordering">Returns</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
 
+    <a href="#cart" class="cart-link">
+  🛒 <span>Cart</span> (<span id="cartCount">0</span>)
+</a>
+
     <a href="https://m.me/kylanathaliee" target="_blank" class="btn btn-solid">
-      Message Kyla on Messenger
+      Message US on Messenger
     </a>
 
   </div>
 </header>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-panel-header">
+    <h2>Your Cart</h2>
+    <button type="button" class="cart-close" id="cartClose">&times;</button>
+  </div>
+
+  <div class="cart-items" id="cartItems">
+    <p class="cart-empty">Your cart is empty.</p>
+  </div>
+
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <strong id="cartTotal">₱0</strong>
+    </div>
+
+    <button type="button" class="cart-checkout" id="cartCheckout">
+      Place Order
+    </button>
+  </div>
+</div>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<!-- ORDER FORM MODAL -->
+<div class="order-modal" id="orderModal">
+  <div class="order-modal-content">
+
+    <div class="order-modal-header">
+      <div>
+        <span class="eyebrow">AURALIS SCENTS</span>
+        <h2>Place Your Order</h2>
+      </div>
+
+      <button
+        type="button"
+        class="order-modal-close"
+        id="orderModalClose"
+        aria-label="Close order form"
+      >
+        ×
+      </button>
+    </div>
+
+    <form id="orderForm">
+
+      <div class="order-form-group">
+        <label for="customerName">Full Name</label>
+        <input
+          type="text"
+          id="customerName"
+          name="customerName"
+          placeholder="Enter your full name"
+          required
+        >
+      </div>
+
+      <div class="order-form-group">
+        <label for="messengerName">Facebook / Messenger Name</label>
+        <input
+          type="text"
+          id="messengerName"
+          name="messengerName"
+          placeholder="Name we can contact on Messenger"
+          required
+        >
+      </div>
+
+      <div class="order-form-group">
+        <label for="phone">Phone Number</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="09XXXXXXXXX"
+          required
+        >
+      </div>
+
+      <div class="order-form-group">
+        <label for="address">Complete Address</label>
+        <textarea
+          id="address"
+          name="address"
+          rows="3"
+          placeholder="House/Unit No., Street, Barangay, City/Municipality, Province"
+          required
+        ></textarea>
+      </div>
+
+      <div class="order-form-group">
+        <label for="zipCode">ZIP Code</label>
+        <input
+          type="text"
+          id="zipCode"
+          name="zipCode"
+          placeholder="Enter ZIP code"
+          required
+        >
+      </div>
+
+      <div class="order-summary">
+        <h3>Your Order</h3>
+
+        <div id="orderSummary"></div>
+
+        <div class="order-summary-total">
+          <span>Total</span>
+          <strong id="orderTotal">₱0</strong>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-solid order-submit">
+        Submit Order
+      </button>
+
+      <p class="order-form-status" id="orderFormStatus"></p>
+
+    </form>
+    <!-- ORDER SUCCESS -->
+<div class="order-success" id="orderSuccess">
+  <div class="order-success-icon">✓</div>
+
+  <span class="eyebrow">AURALIS SCENTS</span>
+
+  <h2>THANK YOU FOR YOUR ORDER!</h2>
+
+  <p>
+    Your order has been submitted successfully. We’ll contact you shortly to confirm your order, delivery details, and payment. Please also message us on Messenger to confirm and inform us of your order. Thank you!
+  </p>
+
+  <button
+    type="button"
+    class="btn btn-solid"
+    id="backToCollection"
+  >
+    BACK TO COLLECTION
+  </button>
+</div>
+  </div>
+</div>
 
   <!-- ======================= HERO ======================= -->
   <section class="hero" id="top">
     <div class="container hero-content">
       <p class="hero-tagline">Wear a story, carry a feeling.</p>
       <h1 class="hero-heading">Luxury in Every Spray</h1>
-      <p class="hero-sub">Authentic luxury mini perfumes from the USA — your favorite brands in travel size.</p>
+      <p class="hero-sub">Authentic luxury mini perfumes from the USA your favorite brands in travel size.</p>
       <div class="hero-actions">
-        <a href="#collection" class="btn btn-solid">Shop the Collection</a>
-        <a href="#contact" class="btn btn-outline">Message Kyla on Messenger</a>
+        <a href="#collection" class="btn btn-solid">View Collection</a>
+        <a href="#contact" class="btn btn-outline">Message US on Messenger</a>
       </div>
-      <p class="hero-flag">🇺🇸 Sourced from Reputable US Suppliers &nbsp;·&nbsp; 💯 Original &amp; Long-Lasting</p>
+      <p class="hero-flag">🇺🇸 Sourced from Reputable US Suppliers &nbsp;·&nbsp; 100% Original &amp; Long-Lasting</p>
     </div>
   </section>
+  <!-- LUXURY BRAND MARQUEE -->
+<section class="brand-marquee" aria-label="Featured fragrance brands">
+  <div class="brand-marquee__track">
+
+    <div class="brand-marquee__content">
+      <span>JO MALONE LONDON</span>
+      <span>DIOR</span>
+      <span>GUCCI</span>
+      <span>MAISON MARGIELA</span>
+      <span>CLINIQUE</span>
+      <span>CHANEL</span>
+      <span>TOCCA</span>
+      <span>DOLCE &amp; GABBANA</span>
+      <span>BVLGARI</span>
+      <span>BYREDO</span>
+      <span>DIPTYQUE</span>
+      <span>VERSACE</span>
+      <span>CREED</span>
+      <span>YVES SAINT LAURENT</span>
+      <span>MIU MIU</span>
+      <span>BILLIE EILISH</span>
+      <span>VIKTOR&amp;ROLF</span>
+      <span>CHLOÉ</span>
+    </div>
+
+    <!-- Duplicate for seamless scrolling -->
+    <div class="brand-marquee__content" aria-hidden="true">
+      <span>JO MALONE LONDON</span>
+      <span>DIOR</span>
+      <span>GUCCI</span>
+      <span>MAISON MARGIELA</span>
+      <span>CLINIQUE</span>
+      <span>CHANEL</span>
+      <span>TOCCA</span>
+      <span>DOLCE &amp; GABBANA</span>
+      <span>BVLGARI</span>
+      <span>BYREDO</span>
+      <span>DIPTYQUE</span>
+      <span>VERSACE</span>
+      <span>CREED</span>
+      <span>YVES SAINT LAURENT</span>
+      <span>MIU MIU</span>
+      <span>BILLIE EILISH</span>
+      <span>VIKTOR&amp;ROLF</span>
+      <span>CHLOÉ</span>
+    </div>
+
+  </div>
+</section>
 
   <!-- ======================= COLLECTION ======================= -->
   <section class="section" id="collection">
@@ -57,9 +256,7 @@
       <span class="eyebrow">The Collection</span>
       <h2 class="section-heading">Shop Our Minis</h2>
       <p class="section-intro">
-        Every bottle listed below is a real, current item — decanted or factory mini as noted on each
-        product. Photos and prices are being finalized and will be added as they become available, so
-        check back or message us for the latest details.
+        Experience your favorite designer fragrances in beautifully sized minis, perfect for travel, gifting, or discovering a new signature scent.
       </p>
       <div class="search-bar">
   <input
@@ -79,176 +276,343 @@
     </div>
   </section>
 
-  <!-- ======================= ABOUT ======================= -->
-  <section class="section section-alt" id="about">
-    <div class="container about-grid">
-      <div class="about-text">
-        <span class="eyebrow">About Auralis Scents</span>
-        <h2 class="section-heading">Authentic Luxury, Travel-Sized</h2>
-        <div class="divider-mark"></div>
-        <p>
-          Auralis Scents brings authentic luxury mini perfumes sourced from reputable suppliers in the
-          USA — your favorite designer brands, in travel-friendly sizes.
-        </p>
-        <p>
-          Every fragrance is 100% authentic. Our minis are either decanted or factory minis, and this
-          is always noted clearly on each product so you know exactly what you're getting.
-        </p>
-      </div>
+  <!-- ========================= ABOUT ========================= -->
+<section class="section section-alt" id="about">
+  <div class="container about-modern">
+
+    <div class="about-intro">
+      <span class="eyebrow">ABOUT AURALIS SCENTS</span>
+
+      <h2 class="section-heading">
+        Authentic Luxury, Travel Sized
+      </h2>
+
+      <div class="divider-mark"></div>
+
       <div class="about-image">
   <img
     src="images/about/hand.png"
-    alt="Auralis Scents luxury mini perfume collection"
-    class="about-photo"
-
+    alt="Giorgio Armani My Way Nectar"
+  >
 </div>
-    </div>
-  </section>
 
-  <!-- ======================= WHY CHOOSE US ======================= -->
-  <section class="section" id="why">
-    <div class="container">
-      <span class="eyebrow">Why Choose Us</span>
-      <h2 class="section-heading">What You Can Expect</h2>
-      <div class="divider-mark"></div>
+      <p class="about-description">
+        Auralis Scents brings authentic luxury mini perfumes sourced from
+        reputable suppliers in the USA your favorite designer brands,
+        in travel friendly sizes.
+      </p>
 
-      <div class="why-grid">
-        <div class="why-card">
-          <h3>100% Authentic</h3>
-          <p>All perfumes are 100% authentic and sourced from reputable suppliers in the USA.</p>
-        </div>
-        <div class="why-card">
-          <h3>Clearly Described Minis</h3>
-          <p>Every product description states clearly whether it's a decanted or factory mini, and its exact size.</p>
-        </div>
-        <div class="why-card">
-          <h3>Nationwide Delivery</h3>
-          <p>We ship nationwide within the Philippines through trusted couriers, with tracking on every order.</p>
-        </div>
-        <div class="why-card">
-          <h3>Simple, Flexible Payment</h3>
-          <p>Pay via GCash, Maya, bank transfer, or Cash on Delivery through selected couriers.</p>
-        </div>
+      <div class="about-promise">
+        <strong>Auralis Promise:</strong>
+        Every fragrance is 100% authentic. Our minis are either decanted
+        or factory minis, and this is always noted clearly on each product
+        so you know exactly what you're getting.
       </div>
     </div>
-  </section>
 
-  <!-- ======================= SHIPPING ======================= -->
-  <section class="section section-alt" id="shipping">
-    <div class="container">
-      <span class="eyebrow">Shipping</span>
-      <h2 class="section-heading">Getting Your Order to You</h2>
-      <div class="divider-mark"></div>
+    <div class="about-features">
 
-      <div class="info-columns">
-        <div class="info-block">
-          <h3>Where We Ship</h3>
-          <p>We ship nationwide within the Philippines.</p>
-
-          <h3>Processing Time</h3>
-          <p>Orders are processed within 1–3 business days after payment confirmation.</p>
-        </div>
-
-        <div class="info-block">
-          <h3>Delivery Time</h3>
-          <ul>
-            <li>Metro Manila: 2–4 business days</li>
-            <li>Provincial Areas: 3–7 business days</li>
-          </ul>
-
-          <h3>Couriers We Use</h3>
-          <ul>
-            <li>J&amp;T Express</li>
-            <li>LBC</li>
-            <li>Shopee Xpress</li>
-          </ul>
-          <p class="info-note">Courier depends on your location. Once shipped, you'll receive a tracking number to monitor your parcel.</p>
+      <div class="about-feature">
+        <div class="feature-icon">
+  <span class="verified-badge">
+  <span>✓</span>
+</span>
+</div>
+        <div>
+          <h3>100% AUTHENTIC</h3>
+          <p>
+            All perfumes are 100% original and sourced strictly from
+            vetted US suppliers.
+          </p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ======================= PAYMENT METHODS ======================= -->
-  <section class="section" id="payment">
-    <div class="container">
-      <span class="eyebrow">Payment Methods</span>
-      <h2 class="section-heading">How to Pay</h2>
-      <div class="divider-mark"></div>
-
-      <div class="info-block" style="max-width: 620px;">
-        <ul>
-          <li>We accept GCash, Maya, Bank Transfers (BDO/BPI), and Cash on Delivery (COD) via selected couriers.</li>
-          <li>Full payment or valid COD details are required before order processing.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================= ORDERING GUIDELINES ======================= -->
-  <section class="section section-alt" id="ordering">
-    <div class="container">
-      <span class="eyebrow">Ordering Guidelines</span>
-      <h2 class="section-heading">How Ordering Works</h2>
-      <div class="divider-mark"></div>
-
-      <div class="info-columns">
-        <div class="info-block">
-          <h3>Authenticity Guarantee</h3>
-          <p>All perfumes are 100% authentic and sourced from reputable suppliers in the USA.</p>
-
-          <h3>Mini Perfume Sizes</h3>
-          <p>Our minis are decanted or factory minis, clearly stated in each product description. Please read each product description carefully before purchasing.</p>
-        </div>
-
-        <div class="info-block">
-          <h3>Order Confirmation</h3>
-          <p>Once an order is placed, you'll receive a confirmation message.</p>
-          <p>Orders cannot be modified after payment is confirmed.</p>
+      <div class="about-feature">
+        <div class="feature-icon">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M3 7h11l7 5-7 5H3V7z"/>
+    <circle cx="7" cy="12" r="1"/>
+  </svg>
+</div>
+        <div>
+          <h3>CLEARLY DESCRIBED MINIS</h3>
+          <p>
+            Decant or factory mini noted transparently on every bottle
+            with precise liquid volume.
+          </p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ======================= REMINDERS ======================= -->
-  <section class="section" id="reminders">
-    <div class="container">
-      <span class="eyebrow">Reminders</span>
-      <h2 class="section-heading">A Few Things to Keep in Mind</h2>
-      <div class="divider-mark"></div>
-
-      <div class="info-block" style="max-width: 620px;">
-        <ul>
-          <li>Keep perfumes in a cool, dry place away from direct sunlight.</li>
-          <li>Test scents on skin before use to ensure no allergic reactions.</li>
-          <li>Each batch may slightly vary in color or scent due to natural formulation differences.</li>
-        </ul>
+      <div class="about-feature">
+        <div class="feature-icon">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M3 6h11v10H3z"/>
+    <path d="M14 9h4l3 3v4h-7z"/>
+    <circle cx="7" cy="18" r="2"/>
+    <circle cx="18" cy="18" r="2"/>
+  </svg>
+</div>
+        <div>
+          <h3>NATIONWIDE DELIVERY</h3>
+          <p>
+            Express delivery to Metro Manila and provincial areas via
+            J&amp;T, LBC, and SPX.
+          </p>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ======================= RETURNS & REFUNDS ======================= -->
-  <section class="section section-alt" id="returns">
-    <div class="container">
-      <span class="eyebrow">Returns &amp; Refund Policy</span>
-      <h2 class="section-heading">Returns &amp; Refunds</h2>
-      <div class="divider-mark"></div>
-
-      <div class="info-block" style="max-width: 620px;">
-        <ul>
-          <li>No return/exchange for change of mind, used, or opened items due to hygiene reasons.</li>
-          <li>Refunds or replacements are only applicable for wrong or damaged items upon delivery.</li>
-          <li>Customers must provide unboxing video evidence if they receive an incorrect or damaged product.</li>
-        </ul>
+      <div class="about-feature">
+        <div class="feature-icon">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="4" y="6" width="16" height="14" rx="1"/>
+    <path d="M7 6V4h10v2"/>
+    <path d="M15 11h5v5h-5a2.5 2.5 0 0 1 0-5z"/>
+    <circle cx="16" cy="13.5" r=".7"/>
+  </svg>
+</div>
+        <div>
+          <h3>FLEXIBLE PH PAYMENT</h3>
+          <p>
+            Hassle free checkout via GCash, Maya, BDO/BPI Bank Transfer,
+            or Cash on Delivery (COD).
+          </p>
+        </div>
       </div>
+
     </div>
-  </section>
+
+  </div>
+</section>
+
+  <!-- ========================= SHIPPING & PAYMENT ========================= -->
+<section class="section logistics-section" id="shipping">
+
+  <div class="container logistics-container">
+
+    <div class="logistics-heading">
+      <span class="eyebrow">LOGISTICS &amp; METHODS</span>
+
+      <h2 class="section-heading">Shipping &amp; Payment</h2>
+    </div>
+
+
+    <!-- Nationwide Shipping -->
+    <div class="logistics-card">
+
+      <div class="logistics-card-header">
+
+        <div class="logistics-title">
+          <span class="logistics-icon">🚚</span>
+          <h3>Nationwide Shipping</h3>
+        </div>
+
+        <span class="logistics-badge">TRACKED</span>
+
+      </div>
+
+      <p class="logistics-description">
+        Orders processed within 1–3 business days after payment
+        confirmation from Cebu City.
+      </p>
+
+      <div class="delivery-times">
+
+        <div class="delivery-option">
+          <span>METRO MANILA</span>
+          <strong>2–4 Days</strong>
+        </div>
+
+        <div class="delivery-option">
+          <span>PROVINCIAL PH</span>
+          <strong>3–7 Days</strong>
+        </div>
+
+      </div>
+
+      <p class="courier-text">
+        COURIERS: J&amp;T EXPRESS · LBC · SHOPEE XPRESS
+      </p>
+
+    </div>
+
+
+    <!-- Payment Options -->
+    <div class="logistics-card">
+
+      <div class="logistics-card-header">
+
+        <div class="logistics-title">
+          <span class="logistics-icon">▣</span>
+          <h3>Payment Options</h3>
+        </div>
+
+        <span class="logistics-badge">VERIFIED</span>
+
+      </div>
+
+      <p class="logistics-description">
+        We accept GCash, Maya, Bank Transfers (BDO / BPI), and
+        Cash on Delivery (COD) via selected couriers.
+      </p>
+
+      <div class="payment-methods">
+
+        <span>GCASH</span>
+        <span>MAYA</span>
+        <span>BDO UNIBANK</span>
+        <span>BPI</span>
+        <span>COD AVAILABLE</span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- ========================= REMINDERS & PRODUCT CARE ========================= -->
+<section class="section" id="ordering">
+
+  <div class="container">
+
+    <div class="product-care-card">
+
+      <div class="product-care-heading">
+        <span class="product-care-icon"></span>
+        <h3>REMINDERS &amp; PRODUCT CARE</h3>
+      </div>
+
+      <ul class="product-care-list">
+        <li>
+          Store perfumes in a cool, dry place away from direct sunlight
+          to preserve aromatic integrity.
+        </li>
+
+        <li>
+          Test scents on inner wrist before all-day wear to observe
+          the scent progression.
+        </li>
+
+        <li>
+          Each batch may slightly vary in hue or initial note due to
+          natural maceration and harvest seasons.
+        </li>
+
+        <li>
+          <strong>Returns &amp; Refunds:</strong>
+          Applicable solely for damaged or incorrect deliveries.
+          An unboxing video is required.
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- ========================= FAQS ========================= -->
+<section class="section faq-section" id="faqs">
+
+  <div class="container faq-container">
+
+    <div class="faq-heading">
+      <span class="eyebrow">FREQUENTLY ASKED QUESTIONS</span>
+
+      <h2 class="section-heading">FAQs</h2>
+
+      <p>
+        Everything you need to know before ordering from Auralis Scents.
+      </p>
+    </div>
+
+
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary>Are your perfumes authentic?</summary>
+        <p>
+          Yes. Auralis Scents offers authentic designer fragrances sourced from reputable suppliers. Each item is clearly described so customers know whether they are purchasing a factory mini or a decant.
+        </p>
+      </details>
+
+
+      <details class="faq-item">
+        <summary>Are your perfumes oil based?</summary>
+        <p>
+          No. Our fragrances are alcohol based perfumes, similar to the original fragrance they are taken from. The concentration and formulation may vary depending on the specific perfume.
+        </p>
+      </details>
+
+
+      <details class="faq-item">
+        <summary>Why is this so small and pricey?</summary>
+        <p>
+          Our minis may be small, but you're paying for the authentic designer fragrance inside, not simply the size of the bottle. Miniature and travel size bottles can also be more expensive per milliliter because they are smaller format branded products.
+        </p>
+      </details>
+
+
+      <details class="faq-item">
+        <summary>Do you ship nationwide?</summary>
+        <p>
+          Yes! We ship to customers across the Philippines through selected couriers. Shipping availability and rates may vary depending on your location.
+        </p>
+      </details>
+
+
+      <details class="faq-item">
+        <summary>Are these factory minis or decants?</summary>
+        <p>
+          It depends on the product. Some are original factory-made miniatures, while others are authentic fragrances carefully decanted into travel-size bottles. The type and exact volume are indicated in each product listing.
+        </p>
+      </details>
+
+
+      <details class="faq-item">
+        <summary>How do I place an order?</summary>
+        <p>
+          - Choose your preferred fragrance from our collection.
+- Click “Add to Cart.”
+- Review your selected items, then click “Place Order.”
+- After placing your order, click “Message US on Messenger” to inform us and confirm your order.
+- Wait for our confirmation and further instructions regarding payment and delivery.
+
+        </p>
+      </details>
+
+
+      <details class="faq-item">
+        <summary>How long does shipping take?</summary>
+        <p>
+          Metro Manila deliveries usually take 2–4 days, while
+          provincial deliveries usually take 3–7 days after processing.
+        </p>
+      </details>
+
+
+      <details class="faq-item">
+        <summary>Do you accept returns or refunds?</summary>
+        <p>
+          Returns and refunds are applicable for damaged or incorrect
+          deliveries. An unboxing video is required for verification.
+        </p>
+      </details>
+
+    </div>
+
+  </div>
+
+</section>
+
 <!-- ======================= VERIFIED REVIEWS ======================= -->
 <section class="section section-alt" id="reviews">
   <div class="container">
     <span class="eyebrow">Verified Reviews</span>
     <h2 class="section-heading">Loved by Our Customers</h2>
     <p class="section-intro">
-      Genuine feedback from our happy customers. 💕
+      Genuine feedback from our happy customers.
     </p>
 
     <div class="review-grid">
@@ -257,7 +621,7 @@
       <article class="review-card">
         <div class="review-top">
           <div>
-            <h3>Salvie Publico</h3>
+            <h3>Salvy P.</h3>
             <p>Verified Messenger Customer</p>
           </div>
           <span class="stars">★★★★★</span>
@@ -276,7 +640,7 @@
       <article class="review-card">
         <div class="review-top">
           <div>
-            <h3>Deomar</h3>
+            <h3>Deomar N.</h3>
             <p>Verified Messenger Customer</p>
           </div>
           <span class="stars">★★★★★</span>
@@ -294,7 +658,7 @@
 <article class="review-card">
   <div class="review-top">
     <div>
-      <h3>Kate Charmaine Albite</h3>
+      <h3>Kate A.</h3>
       <p>Verified Facebook Recommendation</p>
     </div>
     <span class="stars">★★★★★</span>
@@ -309,7 +673,7 @@
 <article class="review-card">
   <div class="review-top">
     <div>
-      <h3>John Christopher Ferrolino</h3>
+      <h3>John Christopher F.</h3>
       <p>Verified Facebook Recommendation</p>
     </div>
     <span class="stars">★★★★★</span>
@@ -324,14 +688,14 @@
 <article class="review-card">
   <div class="review-top">
     <div>
-      <h3>Elmer Colita</h3>
+      <h3>Elmer C.</h3>
       <p>Verified Facebook Recommendation</p>
     </div>
     <span class="stars">★★★★★</span>
   </div>
 
   <p class="review-text">
-    “Super happy with my purchase! I love the scent of the perfume—definitely worth it. The whole transaction was smooth and easy too. Thank you so much! Highly recommended! ❤️”
+    “Super happy with my purchase! I love the scent of the perfume definitely worth it. The whole transaction was smooth and easy too. Thank you so much! Highly recommended! ❤️”
   </p>
 </article>
     </div>
@@ -348,12 +712,12 @@
         <div class="contact-row">
           <div>
             <p class="contact-label">Email</p>
-            <p class="contact-value">auralisscentsph@gmail.com</p>
-            <button class="copy-btn" id="copyEmail" data-email="auralisscentsph@gmail.com">Copy email address</button>
+            <p class="contact-value">auralisscent.ph@gmail.com</p>
+            <button class="copy-btn" id="copyEmail" data-email="auralisscent.ph@gmail.com">Copy email address</button>
           </div>
           <div>
             <p class="contact-label">Customer Support</p>
-            <p class="contact-value">Kyla Nathalie</p>
+            <p class="contact-value">Kay kay</p>
           </div>
           <div>
             <p class="contact-label">Address</p>
@@ -361,38 +725,174 @@
           </div>
         </div>
 
-        <a href="https://www.facebook.com/kylanathaliee" target="_blank" class="btn btn-solid">Message Kyla on Messenger</a>
+        <a href="https://www.facebook.com/kylanathaliee" target="_blank" class="btn btn-solid contact-messenger-btn">Message Us on Messenger</a><div class="contact-social">
+  <a
+    href="https://www.facebook.com/share/1JrkCUYb8a/?mibextid=wwXIfr"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Facebook"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M14 9V7.5c0-.8.5-1.5 1.5-1.5H17V3h-2.5C12 3 11 4.8 11 7v2H8v3h3v9h3v-9h2.5l.5-3z"/>
+    </svg>
+  </a>
+
+  <a
+    href="https://www.instagram.com/auralisscents.ph"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.2" cy="6.8" r="1"/>
+    </svg>
+  </a>
+</div>
       </div>
     </div>
   </section>
 
   <!-- ======================= FOOTER ======================= -->
   <footer class="site-footer">
-  <div class="container footer-inner">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
 
-    <h3 class="footer-logo">Auralis Scents</h3>
+      <!-- BRAND -->
+      <div>
+        <p class="site-footer__brand-name">Auralis Scents</p>
+        <p class="site-footer__tagline">
+          Authentic fragrances, carefully curated and shipped from Cebu City.
+        </p>
+      </div>
 
-    <p class="footer-tagline">
-      Authentic luxury mini perfumes from 🇺🇸
-      100% original & long-lasting scents in travel size.
-    </p>
+      <!-- SHOP -->
+      <div>
+        <h2 class="site-footer__heading">Shop</h2>
 
-    <div class="footer-contact">
-      <p>📍 Cebu City, Philippines</p>
-      <p>📧 auralisscentsph@gmail.com</p>
-      <p>💬 Facebook: Kyla Nathalie</p>
+        <ul class="site-footer__list">
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#shipping">Shipping</a></li>
+          <li><a href="#ordering">Returns</a></li>
+          <li><a href="#faqs">FAQs</a></li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div>
+        <h2 class="site-footer__heading">Contact</h2>
+
+        <ul class="site-footer__list site-footer__contact">
+
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z"/>
+              <circle cx="12" cy="10" r="2.5"/>
+            </svg>
+
+            <span>Cebu City, Philippines 6000</span>
+          </li>
+
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2"/>
+              <path d="m3 7 9 6 9-6"/>
+            </svg>
+
+            <a href="mailto:auralisscent.ph@gmail.com"
+            target="_blank" rel="noopener">
+              auralisscent.ph@gmail.com
+            </a>
+          </li>
+
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3C7 3 3 6.8 3 11.4c0 2.6 1.3 4.9 3.3 6.4V22l3-1.7c.9.2 1.8.4 2.7.4 5 0 9-3.8 9-8.4S17 3 12 3z"/>
+              <path d="m7.5 13.5 3-3.2 2 2 2.9-2.6-3 3.2-2-2z"/>
+            </svg>
+
+            <a href="https://www.facebook.com/kylanathaliee"
+              target="_blank" rel="noopener">
+              Message us on Messenger
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- FOLLOW + PAYMENT -->
+      <div>
+        <h2 class="site-footer__heading">Follow</h2>
+
+        <div class="site-footer__social">
+
+          <a href="https://www.facebook.com/share/1JrkCUYb8a/?mibextid=wwXIfr"
+            target="_blank"
+            rel="noopener"
+            aria-label="Auralis Scents on Facebook">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 9V7.5c0-.8.5-1.5 1.5-1.5H17V3h-2.5C12 3 11 4.8 11 7v2H8v3h3v9h3v-9h2.5l.5-3z"/>
+            </svg>
+
+          </a>
+
+          <a href="https://www.instagram.com/auralisscents.ph"
+            target="_blank"
+            rel="noopener"
+            aria-label="Auralis Scents on Instagram">
+
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.2" cy="6.8" r="1"/>
+            </svg>
+
+          </a>
+        </div>
+
+        <h2 class="site-footer__heading">We accept</h2>
+
+        <div class="site-footer__pay">
+          <span>GCash</span>
+          <span>Maya</span>
+          <span>COD</span>
+          <span>Bank transfer</span>
+        </div>
+
+      </div>
+
     </div>
 
-    <p class="footer-bottom">
-      © <span id="year"></span> Auralis Scents. All rights reserved.
-    </p>
+    <!-- BOTTOM -->
+    <div class="site-footer__bottom">
+
+      <p>&copy; 2026 Auralis Scents. All rights reserved.</p>
+
+      <div class="site-footer__legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+      </div>
+
+    </div>
 
   </div>
 </footer>
 
-  <script src="script.js"></script>
+  <script src="app.js"></script>
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    const yearElement = document.getElementById("year");
+
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
   </script>
 </body>
 </html>
